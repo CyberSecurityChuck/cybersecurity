@@ -2,14 +2,16 @@
 <html>
 <head>
     <title>Cybersecurity Blog</title>
-    <style>
+    <style id="theme-style">
+        /* Default to light mode */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+            color: black;
         }
-        .header {
+        .header, .footer {
             background-color: #333;
             color: #ffffff;
             padding: 10px;
@@ -27,20 +29,12 @@
         .content {
             margin: 15px;
         }
-        .footer {
-            background-color: #333;
-            color: #ffffff;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
     </style>
 </head>
 <body>
     <div class="header">
         <h1>Welcome to Cybersecurity Blog</h1>
+        <button onclick="toggleDarkMode()">Toggle Dark Mode</button>
     </div>
     <div class="nav">
         <a href="#">Home</a>
@@ -54,5 +48,45 @@
     <div class="footer">
         © 2024 Cybersecurity Blog
     </div>
+
+    <script>
+        function toggleDarkMode() {
+            let element = document.getElementById('theme-style');
+            let color = window.getComputedStyle(document.body).backgroundColor;
+            if (color === 'rgb(244, 244, 244)') {
+                element.innerHTML = `
+                    body {
+                        background-color: #333;
+                        color: white;
+                    }
+                    .header, .footer {
+                        background-color: #666;
+                    }
+                    .nav {
+                        background-color: #555;
+                    }
+                    .nav a {
+                        color: white;
+                    }
+                `;
+            } else {
+                element.innerHTML = `
+                    body {
+                        background-color: #f4f4f4;
+                        color: black;
+                    }
+                    .header, .footer {
+                        background-color: #333;
+                    }
+                    .nav {
+                        background-color: #ddd;
+                    }
+                    .nav a {
+                        color: black;
+                    }
+                `;
+            }
+        }
+    </script>
 </body>
 </html>
